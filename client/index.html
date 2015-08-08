@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="sundayCookClub">
 <head>
   <title></title>
   <!-- injector:bower:css -->
@@ -9,6 +9,15 @@
   <!-- endinjector -->
 </head>
 <body>
+  <article class="chat" ng-controller="ChatController as chatctrl">
+    <h3>Chat with Sunday Cooks</h3>
+    <section class="chats">
+      <ul>
+        <li ng-repeat="chat in chatctrl.chats">{{ chat }}</li>
+      </ul>
+    </section>
+    <form class="compose-message" ng-submit="chatctrl.sendChat()"><input type="text" placeholder="Share something" ng-model="chatctrl.chatText"><button>Send</button></form>
+  </article>
   <!-- injector:bower:js -->
   <!-- endinjector -->
 

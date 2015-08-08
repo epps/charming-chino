@@ -1,14 +1,21 @@
-module.exports = function(io) {
-  io.sockets.on('connection', function (socket) {
-    // They connected!!
+module.exports = function( io ) {
+  io.sockets.on( 'connection', function ( socket ) {
+    console.log( 'A new cook has joined the chatroom' );
 
-    // Joining the 'room' for a particular event
-    socket.on('join', function ( room ) {
+    // join event
+    socket.on( 'join', function( room ) {
       socket.join( room );
     });
 
+    // new chat event
+    socket.on( 'new chat', function( chat ) {
+      console.log( 'New chat received from client: ', chat );
+      io.emit( 'new chat', chat );
+    });
+
+    // disconnect event
     socket.on('disconnect', function () {
-        // They disconnected!!
+        console.log('A cook has left the chatroom');
       });
   });
 };
