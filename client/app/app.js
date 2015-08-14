@@ -4,7 +4,8 @@ angular.module('app', [
   'ngMaterial',
   'ngMdIcons',
   'createEvent',
-  'ngAnimate'
+  'ngAnimate',
+  'ngMessages'
   ])
   .config( function ( $urlRouterProvider, $httpProvider, $stateProvider, $mdThemingProvider, $locationProvider ) {
 
@@ -13,18 +14,22 @@ angular.module('app', [
 
     $urlRouterProvider.otherwise( '/' );
 
-    var customBlueMap = $mdThemingProvider.extendPalette( 'light-blue', {
-        'contrastDefaultColor': 'light',
-        'contrastDarkColors': [ '50' ],
-        '50': 'ffffff'
-      });
-      $mdThemingProvider.definePalette( 'customBlue', customBlueMap );
+    // var customBlueMap = $mdThemingProvider.extendPalette( 'light-blue', {
+    //     'contrastDefaultColor': 'light',
+    //     'contrastDarkColors': [ '50' ],
+    //     '50': 'ffffff'
+    //   });
+    //  $mdThemingProvider.definePalette( 'customBlue', customBlueMap );
+
       $mdThemingProvider.theme( 'default' )
-        .primaryPalette( 'customBlue', {
+        .primaryPalette( 'amber', {
           'default': '500',
           'hue-1': '50'
         })
-        .accentPalette('customBlue');
+        .accentPalette('amber',
+          {
+            'default': '500'
+          });
       $mdThemingProvider.theme('input', 'default')
             .primaryPalette('grey');
 
